@@ -164,22 +164,17 @@ public class PrinterInterface {
 				break;
 			case 6:
 				Connection conn6 = null;
-
+				System.out.println("Input the printer name to delete:");
+				Scanner ScDeleteName = new Scanner(System.in);
+				String name = ScDeleteName.next();
+				
 				try {
 					Class.forName("com.mysql.jdbc.Driver");
 					conn6 = DriverManager.getConnection(url);
 					Statement stmt = conn6.createStatement();
-					sql = "select * from printerdemo";
-					ResultSet rs = stmt.executeQuery(sql);
-					System.out
-							.println("PrinterID\tPrintName\tPrintType\tUserInfo\tTaskInfo\tSpeed");
-					while (rs.next()) {
-						System.out.println(rs.getInt(1) + "       \t"
-								+ rs.getString(2) + "        \t"
-								+ rs.getString(3) + "        \t"
-								+ rs.getString(4) + "        \t"
-								+ rs.getString(5) + "        \t"
-								+ rs.getString(6));
+					sql = "DELETE FROM printerdemo WHERE printname = '"+ name +"'";
+					if (-1 != stmt.executeUpdate(sql)) {
+						System.out.println("Delete Successed!");
 					}
 				} catch (SQLException e) {
 					System.out.println("MySQL²Ù×÷´íÎó");
