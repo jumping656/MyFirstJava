@@ -1,10 +1,6 @@
 package Printer;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class TaskAllCheck {
 	private final long timeInterval = 30 * 1000;
@@ -61,8 +57,8 @@ public class TaskAllCheck {
 		Thread thread = new Thread(runnable);
 		thread.start();
 	}
-	
-	public void SetFlag(boolean InputFlag){
+
+	public void SetFlag(boolean InputFlag) {
 		flag = InputFlag;
 	}
 }
